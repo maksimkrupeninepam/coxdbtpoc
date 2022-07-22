@@ -33,6 +33,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   dbt_cox_poc:
+    # Applies to all files under models/core_area/
+    core_area:
+      +materialized: view
+      +enabled: true
+      +schema: CORE_AREA
     # Applies to all files under models/example/
     example:
       +materialized: table

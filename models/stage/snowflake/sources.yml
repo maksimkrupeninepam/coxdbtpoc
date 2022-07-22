@@ -1,0 +1,12 @@
+
+version: 2
+
+sources:
+  - name: sf_source_tables
+    database: SNOWFLAKE
+    schema: ACCOUNT_USAGE
+    tables:
+      - name: USERS
+      - name: GRANTS_TO_USERS
+      - name: ROLES
+      - name: QUERY_HISTORY
