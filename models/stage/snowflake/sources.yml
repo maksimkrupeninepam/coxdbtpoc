@@ -7,6 +7,10 @@ sources:
     schema: ACCOUNT_USAGE
     tables:
       - name: USERS
+      - name: WAREHOUSE_METERING_HISTORY
+      - name: ACCESS_HISTORY
+      - name: TABLES
+      - name: VIEWS
       - name: GRANTS_TO_USERS
       - name: ROLES
       - name: QUERY_HISTORY
