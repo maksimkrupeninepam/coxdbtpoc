@@ -1,8 +1,14 @@
 
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 select
   MD5(t.TABLE_ID) as SF_OBJECT_SK,
   'SNOWFLAKE' as SYS_SOURCE_ID,
-  sysdate() as SYS_LOAD_TIME,
+  CURRENT_TIMESTAMP() as SYS_LOAD_TIME,
   t.TABLE_TYPE as OBJECT_TYPE,
   t.TABLE_ID as OBJECT_ID,
   t.TABLE_CATALOG||'.'||t.TABLE_SCHEMA||'.'||t.TABLE_NAME as SF_OBJECT_NAME,
