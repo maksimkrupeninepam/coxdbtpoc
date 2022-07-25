@@ -1,0 +1,14 @@
+
+version: 2
+ 
+models:
+  - name: h_cai_user
+    description: "HUB table. CAI users that registered in Snowflake account."
+    columns:
+      - name: USER_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('s_user_info')
+              field: USER_SK
