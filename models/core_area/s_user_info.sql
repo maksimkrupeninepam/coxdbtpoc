@@ -6,3 +6,4 @@ select
   u.CREATED_ON as SF_CREATION_DATE,
   u.DISABLED as IS_DISABLED
 from {{source('sf_source_tables','USERS') }} u
+where DELETED_ON is NULL

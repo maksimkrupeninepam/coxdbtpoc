@@ -9,3 +9,4 @@ select
   u.LAST_NAME as LAST_NAME,
   u.EMAIL as EMAIL
 from {{source('sf_source_tables','USERS') }} u
+where DELETED_ON is NULL

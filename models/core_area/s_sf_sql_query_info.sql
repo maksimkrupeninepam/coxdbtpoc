@@ -22,5 +22,5 @@ from {{source('sf_source_tables','QUERY_HISTORY') }} h
 
 {% if is_incremental() %}
   -- this filter will only be applied on an incremental run
-  where h.START_TIME >= (select max(t.START_TIME) from {{ this }} t)
+  where h.START_TIME > (select max(t.START_TIME) from {{ this }} t)
 {% endif %}

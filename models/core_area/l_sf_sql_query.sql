@@ -6,7 +6,7 @@
 }}
 
 select
-  MD5(h.QUERY_ID||'^'||u.LOGIN_NAME||'^'||h.ROLE_NAME||'^'||ifnull(h.WAREHOUSE_NAME,'N/A')) as L_SF_QUERY_OBJECT_SK,
+  MD5(h.QUERY_ID||'^'||u.LOGIN_NAME||'^'||h.ROLE_NAME||'^'||ifnull(h.WAREHOUSE_NAME,'N/A')) as L_SF_SQL_QUERY_SK,
   'SNOWFLAKE' as SYS_SOURCE_ID,
   CURRENT_TIMESTAMP() as SYS_LOAD_TIME,
   MD5(h.QUERY_ID) as QUERY_SK,
