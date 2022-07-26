@@ -1,0 +1,152 @@
+
+version: 2
+ 
+models:
+  - name: h_cai_user
+    description: "HUB table. CAI users that registered in Snowflake account."
+    columns:
+      - name: USER_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('s_user_info')
+              field: USER_SK
+
+  - name: h_sf_object
+    description: "HUB table. Snowflake tables and views."
+    columns:
+      - name: SF_OBJECT_SK
+        tests:
+          - unique
+  
+  - name: h_sf_role
+    description: "HUB table. Snowflake roles."
+    columns:
+      - name: ROLE_SK
+        tests:
+          - unique
+
+  - name: h_sf_sql_query
+    description: "HUB table. History of Snowflake tables."
+    columns:
+      - name: QUERY_SK
+        tests:
+          - unique
+
+  - name: h_sf_virt_wh
+    description: "HUB table. Snowflake Virtual Warehouses."
+    columns:
+      - name: VIRT_WH_SK
+        tests:
+          - unique
+    
+  - name: s_sf_object_info
+    description: "SATELLITE table. Snowflake tables and views."
+    columns:
+      - name: SF_OBJECT_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_sf_object')
+              field: SF_OBJECT_SK
+
+  - name: s_sf_role_info
+    description: "SATELLITE table. Snowflake roles."
+    columns:
+      - name: ROLE_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_sf_role')
+              field: ROLE_SK
+
+  - name: s_sf_sql_query_info
+    description: "SATELLITE table. History of Snowflake tables."
+    columns:
+      - name: QUERY_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_sf_sql_query')
+              field: QUERY_SK
+  - name: s_sf_virt_wh_info
+    description: "SATELLITE table. Snowflake Virtual Warehouses."
+    columns:
+      - name: VIRT_WH_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_sf_virt_wh')
+              field: VIRT_WH_SK
+
+  - name: s_user_info
+    description: "SATELLITE table. CAI users that registered in Snowflake account. Non sensitive info"
+    columns:
+      - name: USER_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
+      - name: IS_DISABLED
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+
+  - name: s_user_pii_info
+    description: "SATELLITE table. CAI users that registered in Snowflake account. PII info"
+    columns:
+      - name: USER_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
+      - name: LOGIN_NAME
+        tests:
+          - unique
+          - not_null
+
+  - name: l_sf_query_object
+    description: "Link table. Objects queried in a SQL query."
+    columns:
+      - name: L_SF_QUERY_OBJECT_SK
+        tests:
+          - unique
+          - not_null
+      - name: QUERY_SK
+        tests:
+          - relationships:
+              to: ref('h_sf_sql_query')
+              field: QUERY_SK
+      - name: SF_OBJECT_SK
+        tests:
+          - relationships:
+              to: ref('h_sf_object')
+              field: SF_OBJECT_SK
+
+  
+  - name: l_sf_sql_query
+    description: "Link table. SQL queries linked to user, role, virtual warehouse."
+    columns:
+      - name: L_SF_SQL_QUERY_SK
+        tests:
+          - unique
+          - not_null
+      - name: QUERY_SK
+        tests:
+          - relationships:
+              to: ref('h_sf_sql_query')
+              field: QUERY_SK
+      - name: USER_SK
+        tests:
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
