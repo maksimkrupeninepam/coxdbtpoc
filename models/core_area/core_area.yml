@@ -121,11 +121,12 @@ models:
         tests:
           - unique
           - not_null
-      - name: QUERY_SK
+      - name: QUERY_SK2
+        # May fail if QUERY_HISTORY and ACCESS_HISTORY are desyncronize
         tests:
           - relationships:
               to: ref('h_sf_sql_query')
-              field: QUERY_SK
+              field: QUERY_ID
       - name: SF_OBJECT_SK
         tests:
           - relationships:
@@ -150,3 +151,21 @@ models:
           - relationships:
               to: ref('h_cai_user')
               field: USER_SK
+  
+  - name: l_user_sf_role
+    description: "Link table. Grants on Snowflake roles to users."
+    columns:
+      - name: L_USER_SF_ROLE_SK
+        tests:
+          - unique
+          - not_null
+      - name: USER_SK
+        tests:
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
+      - name: ROLE_SK
+        tests:
+          - relationships:
+              to: ref('h_sf_role')
+              field: ROLE_SK

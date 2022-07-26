@@ -37,7 +37,7 @@ models:
     core_area:
       +materialized: view
       +enabled: true
-      +schema: CORE_AREA
+      +schema: DBT
     # Applies to all files under models/example/
     example:
       +materialized: table

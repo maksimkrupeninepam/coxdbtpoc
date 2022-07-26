@@ -1,0 +1,11 @@
+
+version: 2
+
+sources:
+  - name: collibra_source_tables
+    database: CADS_ARCHITECTURE
+    schema: COLLIBRA
+    tables:
+      - name: ASSET
+      - name: RELATION
+      - name: ATTRIBUTE
