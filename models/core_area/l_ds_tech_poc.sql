@@ -5,7 +5,7 @@
 }}
 
 select
-  MD5(ds.asset_id||'^'||UPPER(t.asset_display_name)) as L_DS_BIZ_POC_SK,
+  MD5(ds.asset_id||'^'||UPPER(EXPRESSION_LONG)) as L_DS_TECH_POC_SK,
   'COLLIBRA' as SYS_SOURCE_ID,
   sysdate() as SYS_LOAD_TIME,
   MD5(ds.asset_id) as DATA_SET_SK,

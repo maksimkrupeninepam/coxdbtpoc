@@ -13,6 +13,22 @@ models:
               to: ref('s_user_info')
               field: USER_SK
 
+  - name: h_data_area
+    description: "HUB table. Collibra data areas."
+    columns:
+      - name: DATA_AREA_SK
+        tests:
+          - unique
+          - not_null
+
+  - name: h_data_set
+    description: "HUB table. Collibra data sets."
+    columns:
+      - name: DATA_SET_SK
+        tests:
+          - unique
+          - not_null          
+
   - name: h_sf_object
     description: "HUB table. Snowflake tables and views."
     columns:
@@ -41,6 +57,28 @@ models:
         tests:
           - unique
     
+  - name: s_data_area_info
+    description: "SATELLITE table. Collibra data areas attributes."
+    columns:
+      - name: DATA_AREA_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_data_area')
+              field: DATA_AREA_SK
+    
+  - name: s_data_set_info
+    description: "SATELLITE table. Collibra data sets attributes."
+    columns:
+      - name: DATA_SET_SK
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('h_data_set')
+              field: DATA_SET_SK
+  
   - name: s_sf_object_info
     description: "SATELLITE table. Snowflake tables and views."
     columns:
@@ -169,3 +207,75 @@ models:
           - relationships:
               to: ref('h_sf_role')
               field: ROLE_SK
+
+  - name: l_ds_data_area
+    description: "Link table. Data areas of data sets."
+    columns:
+      - name: L_DS_DATA_AREA_SK
+        tests:
+          - unique
+          - not_null
+      - name: DATA_AREA_SK
+        tests:
+          - relationships:
+              to: ref('h_data_area')
+              field: DATA_AREA_SK
+      - name: DATA_SET_SK
+        tests:
+          - relationships:
+              to: ref('h_data_set')
+              field: DATA_SET_SK
+
+  - name: l_ds_sf_object
+    description: "Link table. Snowflake table and views included in a dataset."
+    columns:
+      - name: L_DS_SF_OBJECT_SK
+        tests:
+          - unique
+          - not_null
+      - name: SF_OBJECT_SK
+        tests:
+          - relationships:
+              to: ref('h_sf_object')
+              field: SF_OBJECT_SK
+      - name: DATA_SET_SK
+        tests:
+          - relationships:
+              to: ref('h_data_set')
+              field: DATA_SET_SK
+
+  - name: l_ds_biz_poc
+    description: "Link table. Dataset's business Point of Contact."
+    columns:
+      - name: L_DS_BIZ_POC_SK
+        tests:
+          - unique
+          - not_null
+      - name: DATA_SET_SK
+        tests:
+          - relationships:
+              to: ref('h_data_set')
+              field: DATA_SET_SK
+      - name: USER_SK
+        tests:
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
+
+  - name: l_ds_tech_poc
+    description: "Link table. Dataset's technical Point of Contact."
+    columns:
+      - name: L_DS_TECH_POC_SK
+        tests:
+          - unique
+          - not_null
+      - name: DATA_SET_SK
+        tests:
+          - relationships:
+              to: ref('h_data_set')
+              field: DATA_SET_SK
+      - name: USER_SK
+        tests:
+          - relationships:
+              to: ref('h_cai_user')
+              field: USER_SK
