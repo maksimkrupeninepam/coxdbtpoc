@@ -1,0 +1,11 @@
+WAREHOUSE_SIZE,CREDITS_PER_HOUR
+X-Small,1
+Small,2
+Medium,4
+Large,8
+X-Large,16
+2X-Large,32
+3X-Large,64
+4X-Large,128
+5X-Large,256
+6X-Large,512

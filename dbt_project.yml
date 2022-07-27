@@ -43,3 +43,10 @@ models:
       +materialized: table
       +enabled: false
       +schema: expl
+
+seeds:
+  dbt_cox_poc:
+    snowflake:
+      r_virt_wh_credits:
+        +quote_columns: false
+        +schema: DBT
