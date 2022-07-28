@@ -1,3 +1,8 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
 
 select
   MD5(UPPER(r.GRANTEE_NAME)||'^'||UPPER(r.ROLE)) as L_USER_SF_ROLE_SK,

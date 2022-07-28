@@ -38,6 +38,11 @@ models:
       +materialized: view
       +enabled: true
       +schema: DBT
+    # Applies to all files under models/presentation_area/
+    presentation_area:
+      +materialized: view
+      +enabled: true
+      +schema: DBT  
     # Applies to all files under models/example/
     example:
       +materialized: table
