@@ -15,8 +15,11 @@ select
   count(*) as ACCESSED_TIMES
 from {{source('sf_source_tables','ACCESS_HISTORY') }} hist,
   lateral flatten (input => direct_objects_accessed) objs
-  join {{ref('h_sf_object') }} o on objs.value:objectId = o.SF_OBJECT_ID
-where exists(select 1 from {{ref('h_sf_sql_query') }} q where hist.QUERY_ID = q.QUERY_ID)
+  --join {{ref('h_sf_object') }} o on objs.value:objectId = o.SF_OBJECT_ID
+--where exists(select 1 from {{ref('h_sf_sql_query') }} q where hist.QUERY_ID = q.QUERY_ID)
+where objs.value:objectName is not NULL and not objs.value:objectName like ('%.INFORMATION_SCHEMA.%')
+--where exists(select 1 from {{ref('h_sf_sql_query') }} q where hist.QUERY_ID = q.QUERY_ID)
+and exists(select 1 from {{ref('h_sf_object') }} o where objs.value:objectId = o.SF_OBJECT_ID)
 {% if is_incremental() %}
   -- this filter will only be applied on an incremental run
   and hist.QUERY_START_TIME > (select max(t.QUERY_START_TIME) from {{ this }} t)
