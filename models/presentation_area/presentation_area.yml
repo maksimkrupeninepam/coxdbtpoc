@@ -1,0 +1,32 @@
+version: 2
+ 
+models:
+  - name: det_query_cost_by_user_wh
+    description: "A Snowflake view that stores history of Snowflake queries linked to a user who executed the query + role + virtual warehouse on which the query was executed. Calculates a metric QUERY_APPROX_COST_USD - Approximate cost (USD) assosiated with query"
+    columns:
+      - name: QUERY_TEXT
+        description: Text of the SQL statement.
+      - name: QUERY_ID
+        description: "Internal/system-generated identifier for the SQL statement."
+      - name: START_TIME
+        description: Statement start time (in the UTC time zone).
+      - name: END_TIME
+        description: Statement start time (in the UTC time zone).
+      - name: START_TIME
+        description: Statement end time (in the UTC time zone), or NULL if the statement is still running.
+      - name: TOTAL_ELAPSED_TIME
+        description: Elapsed time (in milliseconds).
+      - name: CREDITS_USED_CLOUD_SERVICES
+        description: Number of credits used for cloud services in the hour.
+      - name: EXECUTION_STATUS
+        description: Execution status for the query - success, fail, incident.
+      - name: WAREHOUSE_SIZE
+        description: Size of the warehouse when this statement executed.
+      - name: QUERY_APPROX_COST_USD
+        description: Approximate cost (USD) assosiated with query.
+      - name: LOGIN_NAME
+        description: User who issued the query.
+      - name: ROLE_NAME
+        description: Role that was active in the session at the time of the query.
+      - name: WAREHOUSE_NAME
+        description: Warehouse that the query executed on, if any.

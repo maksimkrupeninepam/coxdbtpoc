@@ -159,12 +159,12 @@ models:
         tests:
           - unique
           - not_null
-      - name: QUERY_SK2
+      - name: QUERY_SK
         # May fail if QUERY_HISTORY and ACCESS_HISTORY are desyncronize
         tests:
           - relationships:
               to: ref('h_sf_sql_query')
-              field: QUERY_ID
+              field: QUERY_SK
       - name: SF_OBJECT_SK
         tests:
           - relationships:
