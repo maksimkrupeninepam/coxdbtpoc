@@ -11,6 +11,7 @@ select
   a.ASSET_ID as DATA_SET_COLLIBRA_ID,
   a.ASSET_DISPLAY_NAME as DISPLAY_NAME,
   a.ASSET_FULL_NAME as FULL_NAME,
-  a.STATUS_NAME
+  a.STATUS_NAME,
+  to_date(a.CREATION_DATE) as CREATION_DATE
 from {{source('collibra_source_tables','ASSET') }} a
 where a.ASSET_TYPE_NAME = 'Data Set'
