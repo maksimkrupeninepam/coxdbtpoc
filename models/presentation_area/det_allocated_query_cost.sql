@@ -12,7 +12,8 @@ select
   q.TOTAL_ELAPSED_TIME,
   q.EXECUTION_STATUS,
   q.WAREHOUSE_SIZE,
-    (ifnull(q.TOTAL_ELAPSED_TIME/1000/60/60 * c.CREDITS_PER_HOUR * 3, 0)
+  -- /1000/60/60 - ms -> hours; *3 - 3$ per hours (Snowflake Enterprise Edition w/o discount; /2 - adjustment koefficient)
+    (ifnull(q.TOTAL_ELAPSED_TIME/1000/60/60 * c.CREDITS_PER_HOUR * 3/2, 0)
    + ifnull(q.CREDITS_USED_CLOUD_SERVICES * 3, 0))
    /(count(*) over (partition by q.QUERY_ID)) as ALLOCATED_QUERY_COST_USD,
   u.LOGIN_NAME,
