@@ -18,3 +18,4 @@ select
   t.CREATED as CREATED,
   t.COMMENT as OBJECT_COMMENT
 from {{source('sf_source_tables','TABLES') }} t
+where t.DELETED is NULL

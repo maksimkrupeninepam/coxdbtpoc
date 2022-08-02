@@ -32,3 +32,5 @@ join {{ref('l_sf_query_object') }} qo on qo.QUERY_SK = lq.QUERY_SK
 join {{ref('l_ds_sf_object') }} dso on dso.SF_OBJECT_SK = qo.SF_OBJECT_SK
 join {{ref('s_data_set_info') }} ds on ds.DATA_SET_SK = dso.DATA_SET_SK
 join {{ref('s_sf_object_info') }} sf on sf.SF_OBJECT_SK = dso.SF_OBJECT_SK
+
+

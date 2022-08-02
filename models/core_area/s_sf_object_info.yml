@@ -1,0 +1,178 @@
+
+version: 2
+
+models:
+- name: s_sf_object_info
+  description: ''
+  columns:
+  - name: sf_object_sk
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.998136
+      distinct_count: 19281.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+    tests:
+      - unique
+      - not_null
+      - relationships:
+          to: ref('h_sf_object')
+          field: SF_OBJECT_SK  
+  - name: sys_source_id
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 5.2e-05
+      distinct_count: 1.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: sys_load_time
+    description: ''
+    meta:
+      data_type: timestamp_ltz
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 5.2e-05
+      distinct_count: 1.0
+      is_unique: false
+      min: 2022-08-01 15:35:40.613 -0700
+      max: 2022-08-01 15:35:40.613 -0700
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: object_type
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.000207
+      distinct_count: 4.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: object_id
+    description: ''
+    meta:
+      data_type: number
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 1.0
+      distinct_count: 19317.0
+      is_unique: true
+      min: '94210'
+      max: '8987095'
+      avg: 5347432.668064
+      std_dev_population: 3328853.9375834875
+      std_dev_sample: 3328940.1047727233
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: sf_object_name
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 1.0
+      distinct_count: 19317.0
+      is_unique: true
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: db_name
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.003417
+      distinct_count: 66.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: schema
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.036186
+      distinct_count: 699.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: object_name
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.719832
+      distinct_count: 13905.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: created
+    description: ''
+    meta:
+      data_type: timestamp_ltz
+      row_count: 19317.0
+      not_null_proportion: 1.0
+      distinct_proportion: 0.996273
+      distinct_count: 19245.0
+      is_unique: false
+      min: 2019-01-15 08:03:06.690 -0800
+      max: 2022-07-21 11:04:08.090 -0700
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700
+  - name: object_comment
+    description: ''
+    meta:
+      data_type: text
+      row_count: 19317.0
+      not_null_proportion: 0.084744
+      distinct_proportion: 0.042501
+      distinct_count: 821.0
+      is_unique: false
+      min: null
+      max: null
+      avg: null
+      std_dev_population: null
+      std_dev_sample: null
+      profiled_at: 2022-08-01 22:03:42.757 -0700

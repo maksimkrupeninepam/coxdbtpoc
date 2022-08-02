@@ -79,16 +79,16 @@ models:
               to: ref('h_data_set')
               field: DATA_SET_SK
   
-  - name: s_sf_object_info
-    description: "SATELLITE table. Snowflake tables and views."
-    columns:
-      - name: SF_OBJECT_SK
-        tests:
-          - unique
-          - not_null
-          - relationships:
-              to: ref('h_sf_object')
-              field: SF_OBJECT_SK
+#  - name: s_sf_object_info
+#    description: "SATELLITE table. Snowflake tables and views."
+#    columns:
+#      - name: SF_OBJECT_SK
+#        tests:
+#          - unique
+#          - not_null
+#          - relationships:
+#              to: ref('h_sf_object')
+#              field: SF_OBJECT_SK
 
   - name: s_sf_role_info
     description: "SATELLITE table. Snowflake roles."

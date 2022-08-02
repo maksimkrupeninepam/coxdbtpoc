@@ -1,3 +1,5 @@
+{{ dbt_profiler.get_profile(relation=ref("r_virt_wh_credits")) }}
+
 with A as(
 select 
 date_trunc('DAY', "START_TIME") d,
@@ -18,3 +20,4 @@ select
   A.D as DATE, A.Cost as QUERY_APPROX_COST_USD, B.Cost as WH_COST_USD, A.Cost/B.Cost as COST_RATIO
 from A
 join B on A.D = B.D
+

@@ -1,4 +1,3 @@
-
 select
   MD5(UPPER(u.LOGIN_NAME)) as USER_SK,
   'SNOWFLAKE' as SYS_SOURCE_ID,
